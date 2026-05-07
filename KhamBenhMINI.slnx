@@ -1,3 +1,7 @@
 <Solution>
+  <Project Path="BaoCao/BaoCao.csproj" Id="d802b044-6831-4a00-bdff-c6b538087bf1" />
+  <Project Path="DAL/DAL.csproj" Id="91b8f0c2-2edc-4ed6-8640-731321fe360e" />
   <Project Path="KhamBenhMINI/KhamBenhMINI.csproj" />
+  <Project Path="Models/Models.csproj" Id="59258625-e6a0-4edd-a7c3-9b3d5714c9d9" />
+  <Project Path="SQL/SQL.csproj" Id="48ca658b-411d-4ceb-b583-d24054fe99de" />
 </Solution>

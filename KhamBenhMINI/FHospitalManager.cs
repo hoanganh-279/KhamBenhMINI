@@ -48,9 +48,7 @@ namespace KhamBenhMINI
             }
         }
 
-        // ─────────────────────────────────────────────
         //  NHÓM 1 – TIẾP NHẬN VÀ QUẢN LÝ
-        // ─────────────────────────────────────────────
 
         private void btn_MenuTNvaQL_Click(object sender, EventArgs e)
         {
@@ -66,12 +64,9 @@ namespace KhamBenhMINI
         private void btn_TimKiemBN_Click(object sender, EventArgs e)
         {
             // TODO: Mở form Tìm kiếm bệnh nhân
-            // Ví dụ: OpenChildForm(new FTimKiemBN());
         }
 
-        // ─────────────────────────────────────────────
         //  NHÓM 2 – DỊCH VỤ KHÁM BỆNH
-        // ─────────────────────────────────────────────
 
         private void btn_MenuDVKhamBenh_Click(object sender, EventArgs e)
         {
@@ -98,9 +93,7 @@ namespace KhamBenhMINI
             // TODO: Mở form Ghi đơn thuốc / xử lý
         }
 
-        // ─────────────────────────────────────────────
         //  NHÓM 3 – TRA CỨU VÀ BÁO CÁO
-        // ─────────────────────────────────────────────
 
         private void btn_MenuBaoCao_Click(object sender, EventArgs e)
         {
@@ -117,9 +110,7 @@ namespace KhamBenhMINI
             // TODO: Mở form Thống kê lượt khám
         }
 
-        // ─────────────────────────────────────────────
         //  SỰ KIỆN PAINT & LOGO (giữ nguyên, không cần logic)
-        // ─────────────────────────────────────────────
 
         private void pnlSubTiepNhan_Paint(object sender, PaintEventArgs e) { }
         private void pnlSubKhamBenh_Paint(object sender, PaintEventArgs e) { }
