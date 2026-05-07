@@ -79,20 +79,22 @@
             FLPnl_MenuMain.Name = "FLPnl_MenuMain";
             FLPnl_MenuMain.Size = new Size(281, 653);
             FLPnl_MenuMain.TabIndex = 0;
-            FLPnl_MenuMain.Paint += this.FLPnl_MenuMain_Paint;
+            FLPnl_MenuMain.Paint += FLPnl_MenuMain_Paint;
             // 
             // pictureBox_Logo
             // 
+            pictureBox_Logo.Dock = DockStyle.Top;
             pictureBox_Logo.Location = new Point(3, 3);
             pictureBox_Logo.Name = "pictureBox_Logo";
             pictureBox_Logo.Size = new Size(278, 131);
             pictureBox_Logo.TabIndex = 0;
             pictureBox_Logo.TabStop = false;
-            pictureBox_Logo.Click += this.pictureBox_Logo_Click;
+            pictureBox_Logo.Click += pictureBox_Logo_Click;
             // 
             // btn_MenuTNvaQL
             // 
             btn_MenuTNvaQL.BackColor = Color.DodgerBlue;
+            btn_MenuTNvaQL.Dock = DockStyle.Top;
             btn_MenuTNvaQL.FlatAppearance.BorderSize = 0;
             btn_MenuTNvaQL.FlatStyle = FlatStyle.Flat;
             btn_MenuTNvaQL.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -104,17 +106,18 @@
             btn_MenuTNvaQL.Text = "Tiếp nhận và Quản lý ";
             btn_MenuTNvaQL.TextAlign = ContentAlignment.MiddleLeft;
             btn_MenuTNvaQL.UseVisualStyleBackColor = false;
-            btn_MenuTNvaQL.Click += this.btn_MenuTNvaQL_Click;
+            btn_MenuTNvaQL.Click += btn_MenuTNvaQL_Click;
             // 
             // pnlSubTiepNhan
             // 
             pnlSubTiepNhan.Controls.Add(btn_TimKiemBN);
             pnlSubTiepNhan.Controls.Add(btn_QLBenhNhan);
+            pnlSubTiepNhan.Dock = DockStyle.Top;
             pnlSubTiepNhan.Location = new Point(3, 191);
             pnlSubTiepNhan.Name = "pnlSubTiepNhan";
             pnlSubTiepNhan.Size = new Size(272, 62);
             pnlSubTiepNhan.TabIndex = 2;
-            pnlSubTiepNhan.Paint += this.pnlSubTiepNhan_Paint;
+            pnlSubTiepNhan.Paint += pnlSubTiepNhan_Paint;
             // 
             // btn_TimKiemBN
             // 
@@ -130,7 +133,7 @@
             btn_TimKiemBN.Text = "Tìm kiếm bệnh nhân";
             btn_TimKiemBN.TextAlign = ContentAlignment.MiddleLeft;
             btn_TimKiemBN.UseVisualStyleBackColor = true;
-            btn_TimKiemBN.Click += this.btn_TimKiemBN_Click;
+            btn_TimKiemBN.Click += btn_TimKiemBN_Click;
             // 
             // btn_QLBenhNhan
             // 
@@ -146,11 +149,12 @@
             btn_QLBenhNhan.Text = "Quản lý bệnh nhân";
             btn_QLBenhNhan.TextAlign = ContentAlignment.MiddleLeft;
             btn_QLBenhNhan.UseVisualStyleBackColor = true;
-            btn_QLBenhNhan.Click += this.btn_QLBenhNhan_Click;
+            btn_QLBenhNhan.Click += btn_QLBenhNhan_Click;
             // 
             // btn_MenuDVKhamBenh
             // 
             btn_MenuDVKhamBenh.BackColor = Color.DodgerBlue;
+            btn_MenuDVKhamBenh.Dock = DockStyle.Top;
             btn_MenuDVKhamBenh.FlatAppearance.BorderSize = 0;
             btn_MenuDVKhamBenh.FlatStyle = FlatStyle.Flat;
             btn_MenuDVKhamBenh.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -162,6 +166,7 @@
             btn_MenuDVKhamBenh.Text = "Dịch vụ khám bệnh";
             btn_MenuDVKhamBenh.TextAlign = ContentAlignment.MiddleLeft;
             btn_MenuDVKhamBenh.UseVisualStyleBackColor = false;
+            btn_MenuDVKhamBenh.Click += btn_MenuDVKhamBenh_Click;
             // 
             // pnlSubKhamBenh
             // 
@@ -169,10 +174,12 @@
             pnlSubKhamBenh.Controls.Add(btn_GhiChuanDoan);
             pnlSubKhamBenh.Controls.Add(btn_GhiTrieuChung);
             pnlSubKhamBenh.Controls.Add(btn_TaoLuotKham);
+            pnlSubKhamBenh.Dock = DockStyle.Top;
             pnlSubKhamBenh.Location = new Point(3, 310);
             pnlSubKhamBenh.Name = "pnlSubKhamBenh";
             pnlSubKhamBenh.Size = new Size(272, 127);
             pnlSubKhamBenh.TabIndex = 4;
+            pnlSubKhamBenh.Paint += pnlSubKhamBenh_Paint;
             // 
             // btn_GhiDonThuoc
             // 
@@ -188,6 +195,7 @@
             btn_GhiDonThuoc.Text = "Ghi nhận xử lý / thuốc";
             btn_GhiDonThuoc.TextAlign = ContentAlignment.MiddleLeft;
             btn_GhiDonThuoc.UseVisualStyleBackColor = true;
+            btn_GhiDonThuoc.Click += btn_GhiDonThuoc_Click;
             // 
             // btn_GhiChuanDoan
             // 
@@ -203,6 +211,7 @@
             btn_GhiChuanDoan.Text = "Ghi nhận chuẩn đoán";
             btn_GhiChuanDoan.TextAlign = ContentAlignment.MiddleLeft;
             btn_GhiChuanDoan.UseVisualStyleBackColor = true;
+            btn_GhiChuanDoan.Click += btn_GhiChuanDoan_Click;
             // 
             // btn_GhiTrieuChung
             // 
@@ -218,6 +227,7 @@
             btn_GhiTrieuChung.Text = "Ghi nhận triệu chứng";
             btn_GhiTrieuChung.TextAlign = ContentAlignment.MiddleLeft;
             btn_GhiTrieuChung.UseVisualStyleBackColor = true;
+            btn_GhiTrieuChung.Click += btn_GhiTrieuChung_Click;
             // 
             // btn_TaoLuotKham
             // 
@@ -234,10 +244,12 @@
             btn_TaoLuotKham.Text = "Tạo lượt khám";
             btn_TaoLuotKham.TextAlign = ContentAlignment.MiddleLeft;
             btn_TaoLuotKham.UseVisualStyleBackColor = true;
+            btn_TaoLuotKham.Click += btn_TaoLuotKham_Click;
             // 
             // btn_MenuBaoCao
             // 
             btn_MenuBaoCao.BackColor = Color.DodgerBlue;
+            btn_MenuBaoCao.Dock = DockStyle.Top;
             btn_MenuBaoCao.FlatAppearance.BorderSize = 0;
             btn_MenuBaoCao.FlatStyle = FlatStyle.Flat;
             btn_MenuBaoCao.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -249,15 +261,18 @@
             btn_MenuBaoCao.Text = "Tra cứu và Báo cáo";
             btn_MenuBaoCao.TextAlign = ContentAlignment.MiddleLeft;
             btn_MenuBaoCao.UseVisualStyleBackColor = false;
+            btn_MenuBaoCao.Click += btn_MenuBaoCao_Click;
             // 
             // pnlSubBaoCao
             // 
             pnlSubBaoCao.Controls.Add(btn_ThongKeKB);
             pnlSubBaoCao.Controls.Add(btn_LinhSuKB);
+            pnlSubBaoCao.Dock = DockStyle.Top;
             pnlSubBaoCao.Location = new Point(3, 494);
             pnlSubBaoCao.Name = "pnlSubBaoCao";
             pnlSubBaoCao.Size = new Size(272, 74);
             pnlSubBaoCao.TabIndex = 6;
+            pnlSubBaoCao.Paint += pnlSubBaoCao_Paint;
             // 
             // btn_ThongKeKB
             // 
@@ -272,6 +287,7 @@
             btn_ThongKeKB.Text = "Thống kê lượt khám theo ngày";
             btn_ThongKeKB.TextAlign = ContentAlignment.MiddleLeft;
             btn_ThongKeKB.UseVisualStyleBackColor = true;
+            btn_ThongKeKB.Click += btn_ThongKeKB_Click;
             // 
             // btn_LinhSuKB
             // 
@@ -286,6 +302,7 @@
             btn_LinhSuKB.Text = "Lịch sử khám bệnh";
             btn_LinhSuKB.TextAlign = ContentAlignment.MiddleLeft;
             btn_LinhSuKB.UseVisualStyleBackColor = true;
+            btn_LinhSuKB.Click += btn_LinhSuKB_Click;
             // 
             // pnl_Content
             // 
@@ -294,6 +311,7 @@
             pnl_Content.Name = "pnl_Content";
             pnl_Content.Size = new Size(601, 653);
             pnl_Content.TabIndex = 1;
+            pnl_Content.Paint += pnl_Content_Paint;
             // 
             // FHospitalManager
             // 
@@ -303,7 +321,8 @@
             Controls.Add(pnl_Content);
             Controls.Add(panel1);
             Name = "FHospitalManager";
-            Text = "Form2";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Hospital Manage";
             panel1.ResumeLayout(false);
             FLPnl_MenuMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox_Logo).EndInit();

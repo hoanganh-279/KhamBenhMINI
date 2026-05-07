@@ -89,7 +89,7 @@
             button_Exit.Location = new Point(295, 250);
             button_Exit.Name = "button_Exit";
             button_Exit.Size = new Size(94, 29);
-            button_Exit.TabIndex = 6;
+            button_Exit.TabIndex = 4;
             button_Exit.Text = "Thoát";
             button_Exit.UseVisualStyleBackColor = true;
             button_Exit.Click += button_Exit_Click;
@@ -99,7 +99,8 @@
             button_Login.Location = new Point(109, 250);
             button_Login.Name = "button_Login";
             button_Login.Size = new Size(94, 29);
-            button_Login.TabIndex = 5;
+            button_Login.TabIndex = 3;
+            button_Login.Tag = "";
             button_Login.Text = "Đăng nhập";
             button_Login.UseVisualStyleBackColor = true;
             button_Login.Click += button_Login_Click;
@@ -109,7 +110,9 @@
             textBox_Password.Location = new Point(177, 161);
             textBox_Password.Name = "textBox_Password";
             textBox_Password.Size = new Size(262, 27);
-            textBox_Password.TabIndex = 4;
+            textBox_Password.TabIndex = 2;
+            textBox_Password.Tag = "";
+            textBox_Password.UseSystemPasswordChar = true;
             textBox_Password.TextChanged += textBox_Password_TextChanged;
             // 
             // textBox_Name
@@ -117,7 +120,8 @@
             textBox_Name.Location = new Point(177, 96);
             textBox_Name.Name = "textBox_Name";
             textBox_Name.Size = new Size(262, 27);
-            textBox_Name.TabIndex = 3;
+            textBox_Name.TabIndex = 1;
+            textBox_Name.Tag = "";
             textBox_Name.TextChanged += textBox_Name_TextChanged;
             // 
             // FLogin
@@ -127,6 +131,7 @@
             ClientSize = new Size(568, 372);
             Controls.Add(panel1);
             Name = "FLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng nhập";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
