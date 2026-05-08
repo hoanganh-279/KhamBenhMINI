@@ -1,4 +1,4 @@
-﻿namespace KhamBenhMINI.Models
+﻿namespace KhamBenhMINI
 {
     public class Admin
     {

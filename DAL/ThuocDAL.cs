@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace KhamBenhMINI.DAL
+namespace KhamBenhMINI
 {
     public class ThuocDAL
     {

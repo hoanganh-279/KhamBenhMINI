@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 
-namespace KhamBenhMINI.DAL
+namespace KhamBenhMINI
 {
     public class TrieuChungDAL
     {

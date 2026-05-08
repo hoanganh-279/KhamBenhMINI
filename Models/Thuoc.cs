@@ -1,4 +1,4 @@
-﻿namespace KhamBenhMINI.Models
+﻿namespace KhamBenhMINI
 {
     /// <summary>
     /// Model đại diện cho bảng Thuoc

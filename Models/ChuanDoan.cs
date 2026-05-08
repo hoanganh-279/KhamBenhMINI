@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KhamBenhMINI.Models
+namespace KhamBenhMINI
 {
     /// <summary>
     /// DTO đóng gói thông tin chẩn đoán theo lượt khám

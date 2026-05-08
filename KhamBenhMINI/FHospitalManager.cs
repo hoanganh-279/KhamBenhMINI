@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Windows.Forms;
 using System.Text;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace KhamBenhMINI
@@ -15,12 +17,12 @@ namespace KhamBenhMINI
         public FHospitalManager()
         {
             InitializeComponent();
-
-            // Ẩn toàn bộ panel con ngay khi khởi tạo form
             CollapseAllSubPanels();
         }
 
+        // ─────────────────────────────────────────────
         //  HÀM HELPER DÙNG CHUNG
+        // ─────────────────────────────────────────────
 
         private void CollapseAllSubPanels()
         {
@@ -30,25 +32,47 @@ namespace KhamBenhMINI
             _currentOpenPanel = null;
         }
 
-        /// <param name="targetPanel">Panel cần toggle.</param>
         private void ToggleSubPanel(Panel targetPanel)
         {
             if (_currentOpenPanel == targetPanel)
             {
-                // Click lần 2 vào cùng menu → đóng lại
                 targetPanel.Visible = false;
                 _currentOpenPanel = null;
             }
             else
             {
-                // Đóng panel đang mở (nếu có) rồi mở panel mới
                 CollapseAllSubPanels();
                 targetPanel.Visible = true;
                 _currentOpenPanel = targetPanel;
             }
         }
 
+        // 🔹 METHOD MỚI: Mở form con trong panel content
+        private void OpenChildForm(Form childForm)
+        {
+            // Đóng form cũ nếu có
+            foreach (Control ctrl in pnl_Content.Controls)
+            {
+                if (ctrl is Form oldForm)
+                {
+                    oldForm.Close();  // oldForm đã là Form nên gọi Close() được
+                }
+            }
+
+            // Cấu hình form con để nhúng vào panel
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+
+            // Thêm form vào panel content
+            pnl_Content.Controls.Clear();
+            pnl_Content.Controls.Add(childForm);
+            childForm.Show();
+        }
+
+        // ─────────────────────────────────────────────
         //  NHÓM 1 – TIẾP NHẬN VÀ QUẢN LÝ
+        // ─────────────────────────────────────────────
 
         private void btn_MenuTNvaQL_Click(object sender, EventArgs e)
         {
@@ -57,8 +81,7 @@ namespace KhamBenhMINI
 
         private void btn_QLBenhNhan_Click(object sender, EventArgs e)
         {
-            // TODO: Mở form Quản lý bệnh nhân
-            // Ví dụ: OpenChildForm(new FQLBenhNhan());
+            OpenChildForm(new FQLBenhNhan());  // ✅ ĐÃ SỬA: Gọi method OpenChildForm
         }
 
         private void btn_TimKiemBN_Click(object sender, EventArgs e)

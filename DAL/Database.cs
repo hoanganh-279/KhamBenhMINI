@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;  // ← Chỉ dùng namespace này
 using System.Data;
 
-namespace KhamBenhMINI.DAL
+namespace KhamBenhMINI
 {
     public static class Database
     {

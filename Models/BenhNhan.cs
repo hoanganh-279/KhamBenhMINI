@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KhamBenhMINI.Models
+namespace KhamBenhMINI
 {
     /// <summary>
     /// Model đại diện cho bảng BenhNhan
