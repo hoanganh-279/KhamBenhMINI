@@ -130,7 +130,7 @@ namespace KhamBenhMINI
 
         private void btn_ThongKeKB_Click(object sender, EventArgs e)
         {
-            // TODO: Mở form Thống kê lượt khám
+            OpenChildForm(new FThongKe());
         }
 
         //  SỰ KIỆN PAINT & LOGO (giữ nguyên, không cần logic)

@@ -79,7 +79,7 @@
             gbox_QLBenhNhan.ForeColor = Color.Blue;
             gbox_QLBenhNhan.Location = new Point(6, 3);
             gbox_QLBenhNhan.Name = "gbox_QLBenhNhan";
-            gbox_QLBenhNhan.Size = new Size(583, 647);
+            gbox_QLBenhNhan.Size = new Size(580, 650);
             gbox_QLBenhNhan.TabIndex = 0;
             gbox_QLBenhNhan.TabStop = false;
             gbox_QLBenhNhan.Text = "QUẢN LÝ BỆNH NHÂN";

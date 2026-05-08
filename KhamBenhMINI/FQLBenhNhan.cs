@@ -104,7 +104,7 @@ namespace KhamBenhMINI
             try
             {
                 string gioiTinh = rbtn_GioiTinh_Nam.Checked ? "Nam" : "Nữ";
-                int namSinh = dtp_NamSinh.Value.Year;  // ← LẤY NĂM TỪ DateTimePicker
+                int namSinh = dtp_NamSinh.Value.Year;  
 
                 if (dal.Insert(tbox_Name.Text.Trim(), gioiTinh, namSinh,
                     tbox_SDT.Text.Trim(), tbox_Location.Text.Trim()))
@@ -205,11 +205,10 @@ namespace KhamBenhMINI
                 if (row.Cells["HoTen"].Value != null)
                     tbox_Name.Text = row.Cells["HoTen"].Value.ToString();
 
-                // ← SỬA LỖI DateTime: Set năm cho DateTimePicker
                 if (row.Cells["NamSinh"].Value != null)
                 {
                     int namSinh = Convert.ToInt32(row.Cells["NamSinh"].Value);
-                    dtp_NamSinh.Value = new DateTime(namSinh, 1, 1);  // ← Constructor đúng
+                    dtp_NamSinh.Value = new DateTime(namSinh, 1, 1);  
                 }
 
                 if (row.Cells["SoDienThoai"].Value != null)
@@ -237,7 +236,6 @@ namespace KhamBenhMINI
             }
         }
 
-        // Các event rỗng giữ nguyên
         private void gbox_QLBenhNhan_Enter(object sender, EventArgs e) { }
         private void gbox_QLBenhNhan_TTBenhNhan_Enter(object sender, EventArgs e) { }
         private void tbox_Name_TextChanged(object sender, EventArgs e) { }
