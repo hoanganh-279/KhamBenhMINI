@@ -1,9 +1,13 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+<<<<<<< HEAD
 using KhamBenhMINI.DAL;
 using System.Linq;
+=======
+using KhamBenhMINI.Features.DichVuKhamBenh;
+>>>>>>> 629bd7c35dfca16a2af7e7a412b4307371b75b69
 
 namespace KhamBenhMINI
 {
@@ -16,7 +20,13 @@ namespace KhamBenhMINI
         public FQLBenhNhan()
         {
             InitializeComponent();
+<<<<<<< HEAD
             CreateSearchBox();       
+=======
+            UiTheme.ApplyWorkspaceChrome(this);
+            ApplyVisualTheme();
+            LoadData();
+>>>>>>> 629bd7c35dfca16a2af7e7a412b4307371b75b69
             SetupControls();
             LoadData();
         }
@@ -38,6 +48,31 @@ namespace KhamBenhMINI
 
             // Nếu bạn có GroupBox hoặc Panel chứa danh sách, hãy thay this.Controls.Add bằng:
             // gbox_DanhSach.Controls.Add(tbox_TimKiem);   // hoặc tên groupbox của bạn
+        }
+
+        private void ApplyVisualTheme()
+        {
+            UiTheme.StyleGroupBox(gbox_QLBenhNhan);
+            UiTheme.StyleGroupBox(gbox_QLBenhNhan_TTBenhNhan);
+            UiTheme.StyleGroupBox(gbox_QLBenhNhan_Function);
+            UiTheme.StyleGroupBox(gbox_QLBenhNhan_DanhSach);
+
+            UiTheme.StyleTextBox(tbox_Name);
+            UiTheme.StyleTextBox(tbox_SDT);
+            UiTheme.StyleTextBox(tbox_Location);
+            UiTheme.StyleDatePicker(dtp_NamSinh);
+            dtp_NamSinh.CustomFormat = "yyyy";
+
+            UiTheme.StyleRadio(rbtn_GioiTinh_Nam);
+            UiTheme.StyleRadio(rbtn_GioiTinh_Nu);
+
+            UiTheme.StyleButton(btn_Function_Them, true);
+            UiTheme.StyleButton(btn_Function_Sua, false);
+            UiTheme.StyleDangerButton(btn_Function_Xóa);
+            UiTheme.StyleButton(btn_Function_ThongKe, false);
+            UiTheme.StyleButton(btn_Function_LamMoi, false);
+
+            UiTheme.StyleGrid(dgv_DanhSach);
         }
 
         private void SetupControls()
@@ -244,6 +279,19 @@ namespace KhamBenhMINI
         }
 
         private void gbox_QLBenhNhan_Enter(object sender, EventArgs e) { }
+<<<<<<< HEAD
         private void label1_Click(object sender, EventArgs e) { }
+=======
+        private void gbox_QLBenhNhan_TTBenhNhan_Enter(object sender, EventArgs e) { }
+        private void tbox_Name_TextChanged(object sender, EventArgs e) { }
+        private void rbtn_GioiTinh_Nam_CheckedChanged(object sender, EventArgs e) { }
+        private void rbtn_GioiTinh_Nu_CheckedChanged(object sender, EventArgs e) { }
+        private void tbox_Location_TextChanged(object sender, EventArgs e) { }
+        private void dtp_NamSinh_ValueChanged(object sender, EventArgs e) { }
+        private void tbox_SDT_TextChanged(object sender, EventArgs e) { }
+        private void btn_Function_ThongKe_Click(object sender, EventArgs e) { }
+        private void gbox_QLBenhNhan_Function_Enter(object sender, EventArgs e) { }
+        private void dgv_DanhSach_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+>>>>>>> 629bd7c35dfca16a2af7e7a412b4307371b75b69
     }
 }

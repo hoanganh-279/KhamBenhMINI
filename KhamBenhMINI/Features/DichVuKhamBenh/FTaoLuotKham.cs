@@ -26,7 +26,7 @@ namespace KhamBenhMINI.Features.DichVuKhamBenh
         private void InitializeUI()
         {
             Text = "Tạo lượt khám";
-            BackColor = UiTheme.SoftBlue;
+            BackColor = UiTheme.PageBackground;
             KeyPreview = true;
             KeyDown += FTaoLuotKham_KeyDown;
             Padding = new Padding(10);

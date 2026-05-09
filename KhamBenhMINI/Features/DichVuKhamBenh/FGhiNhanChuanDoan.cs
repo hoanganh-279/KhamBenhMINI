@@ -21,6 +21,7 @@ namespace KhamBenhMINI.Features.DichVuKhamBenh
         private readonly DataGridView dgvChanDoan = new DataGridView();
         private readonly DataTable dtChanDoan = new DataTable();
         private int _maLuotKham;
+        private bool _syncingLaBenhChinh;
 
         public FGhiNhanChuanDoan()
         {
@@ -31,7 +32,7 @@ namespace KhamBenhMINI.Features.DichVuKhamBenh
         private void InitializeUI()
         {
             Text = "Ghi nhận chuẩn đoán";
-            BackColor = UiTheme.SoftBlue;
+            BackColor = UiTheme.PageBackground;
             KeyPreview = true;
             KeyDown += FGhiNhanChuanDoan_KeyDown;
             Padding = new Padding(10);
@@ -81,9 +82,10 @@ namespace KhamBenhMINI.Features.DichVuKhamBenh
             rowIcd.Controls.Add(lstGoiYICD, 3, 0);
             rowIcd.SetRowSpan(lstGoiYICD, 2);
 
-            TableLayoutPanel rowNote = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 4 };
+            TableLayoutPanel rowNote = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 5 };
             rowNote.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70));
             rowNote.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            rowNote.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120));
             rowNote.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130));
             rowNote.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130));
             Label lblGhiChu = new Label { Text = "Ghi chú", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft, Font = UiTheme.NormalFont };
@@ -100,11 +102,16 @@ namespace KhamBenhMINI.Features.DichVuKhamBenh
 
             rowNote.Controls.Add(lblGhiChu, 0, 0);
             rowNote.Controls.Add(txtGhiChu, 1, 0);
-            rowNote.Controls.Add(btnThemChanDoan, 2, 0);
-            rowNote.Controls.Add(btnXoaChanDoan, 3, 0);
+            rowNote.Controls.Add(chkBenhChinh, 2, 0);
+            rowNote.Controls.Add(btnThemChanDoan, 3, 0);
+            rowNote.Controls.Add(btnXoaChanDoan, 4, 0);
 
             dgvChanDoan.Dock = DockStyle.Fill;
             UiTheme.StyleGrid(dgvChanDoan);
+            dgvChanDoan.ReadOnly = false;
+            dgvChanDoan.CellValueChanged += DgvChanDoan_CellValueChanged;
+            dgvChanDoan.CurrentCellDirtyStateChanged += DgvChanDoan_CurrentCellDirtyStateChanged;
+            dgvChanDoan.DataBindingComplete += DgvChanDoan_DataBindingComplete;
             dgvChanDoan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             TableLayoutPanel rowSummary = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 3 };
@@ -255,6 +262,46 @@ namespace KhamBenhMINI.Features.DichVuKhamBenh
         {
             if (dgvChanDoan.CurrentRow == null || dgvChanDoan.CurrentRow.Index < 0) return;
             dtChanDoan.Rows.RemoveAt(dgvChanDoan.CurrentRow.Index);
+        }
+
+        private void DgvChanDoan_DataBindingComplete(object? sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn col in dgvChanDoan.Columns)
+            {
+                col.ReadOnly = col.DataPropertyName != "LaBenhChinh";
+                if (col.DataPropertyName == "LaBenhChinh")
+                    col.HeaderText = "Bệnh chính";
+            }
+        }
+
+        private void DgvChanDoan_CurrentCellDirtyStateChanged(object? sender, EventArgs e)
+        {
+            if (dgvChanDoan.IsCurrentCellDirty && dgvChanDoan.CurrentCell is DataGridViewCheckBoxCell)
+                dgvChanDoan.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void DgvChanDoan_CellValueChanged(object? sender, DataGridViewCellEventArgs e)
+        {
+            if (_syncingLaBenhChinh || e.RowIndex < 0 || e.ColumnIndex < 0) return;
+            DataGridViewColumn? col = dgvChanDoan.Columns[e.ColumnIndex];
+            if (col.DataPropertyName != "LaBenhChinh") return;
+
+            object? val = dgvChanDoan[e.ColumnIndex, e.RowIndex].Value;
+            if (val is not bool isPrimary || !isPrimary) return;
+
+            _syncingLaBenhChinh = true;
+            try
+            {
+                for (int i = 0; i < dtChanDoan.Rows.Count; i++)
+                {
+                    if (i != e.RowIndex)
+                        dtChanDoan.Rows[i]["LaBenhChinh"] = false;
+                }
+            }
+            finally
+            {
+                _syncingLaBenhChinh = false;
+            }
         }
 
         private void FGhiNhanChuanDoan_KeyDown(object? sender, KeyEventArgs e)
