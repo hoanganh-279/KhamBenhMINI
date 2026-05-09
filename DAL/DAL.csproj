@@ -154,6 +154,7 @@
     <Compile Include="BenhNhanDAL.cs" />
     <Compile Include="ChuanDoanDAL.cs" />
     <Compile Include="DonThuocDAL.cs" />
+    <Compile Include="KhamBenhServiceDAL.cs" />
     <Compile Include="LuotKhamDAL.cs" />
     <Compile Include="ThuocDAL.cs" />
     <Compile Include="TrieuChungDAL.cs" />
