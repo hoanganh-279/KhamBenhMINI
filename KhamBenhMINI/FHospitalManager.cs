@@ -81,7 +81,7 @@ namespace KhamBenhMINI
 
         private void btn_QLBenhNhan_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new FQLBenhNhan());  // ✅ ĐÃ SỬA: Gọi method OpenChildForm
+            OpenChildForm(new FQLBenhNhan());  
         }
 
         private void btn_TimKiemBN_Click(object sender, EventArgs e)
