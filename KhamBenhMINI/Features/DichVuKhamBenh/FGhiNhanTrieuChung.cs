@@ -26,7 +26,7 @@ namespace KhamBenhMINI.Features.DichVuKhamBenh
         private void InitializeUI()
         {
             Text = "Ghi nhận triệu chứng";
-            BackColor = UiTheme.SoftBlue;
+            BackColor = UiTheme.PageBackground;
             KeyPreview = true;
             KeyDown += FGhiNhanTrieuChung_KeyDown;
             Padding = new Padding(10);

@@ -39,7 +39,7 @@ namespace KhamBenhMINI.Features.DichVuKhamBenh
         private void InitializeUI()
         {
             Text = "Ghi nhận xử lý / thuốc";
-            BackColor = UiTheme.SoftBlue;
+            BackColor = UiTheme.PageBackground;
             KeyPreview = true;
             KeyDown += FGhiNhanXuLyThuoc_KeyDown;
             Padding = new Padding(10);
@@ -163,7 +163,7 @@ namespace KhamBenhMINI.Features.DichVuKhamBenh
             pnlActions.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130));
             pnlActions.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130));
             pnlActions.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 130));
-            pnlActions.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 140));
+            pnlActions.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 230));
 
             cboDungBuaAn.Dock = DockStyle.Fill; cboDungBuaAn.DropDownStyle = ComboBoxStyle.DropDownList; cboDungBuaAn.Font = UiTheme.NormalFont;
             cboDungBuaAn.Items.AddRange(new object[] { "Trước ăn", "Sau ăn", "Trong ăn" });
@@ -193,7 +193,7 @@ namespace KhamBenhMINI.Features.DichVuKhamBenh
             UiTheme.StyleButton(btnXoa, false);
             btnXoa.Click += BtnXoa_Click;
 
-            btnLuu.Text = "Lưu xử lý / thuốc";
+            btnLuu.Text = "Lưu và xử lý thuốc";
             btnLuu.Dock = DockStyle.Fill;
             UiTheme.StyleButton(btnLuu);
             btnLuu.Click += BtnLuu_Click;
@@ -340,7 +340,7 @@ namespace KhamBenhMINI.Features.DichVuKhamBenh
             }
 
             _dal.LuuXuLyThuoc(_maLuotKham, txtHuongXuLy.Text, dtThuoc);
-            MessageBox.Show("Đã lưu xử lý / thuốc.", "Thành công",
+            MessageBox.Show("Đã lưu xử lý và thuốc.", "Thành công",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 

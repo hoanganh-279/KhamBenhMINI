@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Windows.Forms;
 using KhamBenhMINI.DAL;
+using KhamBenhMINI.Features.DichVuKhamBenh;
 
 namespace KhamBenhMINI
 {
@@ -13,8 +14,40 @@ namespace KhamBenhMINI
         public FThongKe()
         {
             InitializeComponent();
+            UiTheme.ApplyWorkspaceChrome(this);
+            ApplyVisualTheme();
             LoadData();
             SetupControls();
+        }
+
+        private void ApplyVisualTheme()
+        {
+            UiTheme.StyleGroupBox(groupBox1);
+            UiTheme.StyleGroupBox(groupBox2);
+            UiTheme.StyleGroupBox(groupBox3);
+            UiTheme.StyleGroupBox(groupBox4);
+            UiTheme.StyleGroupBox(groupBox5);
+            UiTheme.StyleGroupBox(groupBox6);
+
+            UiTheme.StyleDatePicker(dtp_FromDate);
+            UiTheme.StyleDatePicker(dtp_ToDate);
+            dtp_FromDate.CustomFormat = "dd/MM/yyyy";
+            dtp_ToDate.CustomFormat = "dd/MM/yyyy";
+
+            UiTheme.StyleCombo(cbo_BacSi);
+            UiTheme.StyleTextBox(txt_TongSoLuot);
+            txt_TongSoLuot.BackColor = UiTheme.SoftBlue;
+
+            UiTheme.StyleButton(btn_ThongKeTheoNgay, true);
+            UiTheme.StyleButton(btn_ThongKeTheoThang, false);
+            UiTheme.StyleButton(btn_ThongKeTheoBacSi, false);
+            UiTheme.StyleButton(btn_ThongKeTongQuan, true);
+            UiTheme.StyleSuccessButton(btn_XuatBaoCao);
+            UiTheme.StyleButton(btn_Dong, false);
+
+            UiTheme.StyleGrid(dgv_ThongKe);
+            UiTheme.StyleGrid(dgv_TKTongHop_BacSi);
+            UiTheme.StyleGrid(dgv_TKTongHop_ChuanDoan);
         }
 
         private void SetupControls()

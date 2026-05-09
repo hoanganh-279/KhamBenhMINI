@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Windows.Forms;
+using KhamBenhMINI.Features.DichVuKhamBenh;
 
 namespace KhamBenhMINI
 {
@@ -12,8 +13,35 @@ namespace KhamBenhMINI
         public FQLBenhNhan()
         {
             InitializeComponent();
+            UiTheme.ApplyWorkspaceChrome(this);
+            ApplyVisualTheme();
             LoadData();
             SetupControls();
+        }
+
+        private void ApplyVisualTheme()
+        {
+            UiTheme.StyleGroupBox(gbox_QLBenhNhan);
+            UiTheme.StyleGroupBox(gbox_QLBenhNhan_TTBenhNhan);
+            UiTheme.StyleGroupBox(gbox_QLBenhNhan_Function);
+            UiTheme.StyleGroupBox(gbox_QLBenhNhan_DanhSach);
+
+            UiTheme.StyleTextBox(tbox_Name);
+            UiTheme.StyleTextBox(tbox_SDT);
+            UiTheme.StyleTextBox(tbox_Location);
+            UiTheme.StyleDatePicker(dtp_NamSinh);
+            dtp_NamSinh.CustomFormat = "yyyy";
+
+            UiTheme.StyleRadio(rbtn_GioiTinh_Nam);
+            UiTheme.StyleRadio(rbtn_GioiTinh_Nu);
+
+            UiTheme.StyleButton(btn_Function_Them, true);
+            UiTheme.StyleButton(btn_Function_Sua, false);
+            UiTheme.StyleDangerButton(btn_Function_Xóa);
+            UiTheme.StyleButton(btn_Function_ThongKe, false);
+            UiTheme.StyleButton(btn_Function_LamMoi, false);
+
+            UiTheme.StyleGrid(dgv_DanhSach);
         }
 
         private void SetupControls()
@@ -246,9 +274,6 @@ namespace KhamBenhMINI
         private void tbox_SDT_TextChanged(object sender, EventArgs e) { }
         private void btn_Function_ThongKe_Click(object sender, EventArgs e) { }
         private void gbox_QLBenhNhan_Function_Enter(object sender, EventArgs e) { }
-        private void rbtn_Function_ThongKe_CanBenh_CheckedChanged(object sender, EventArgs e) { }
-        private void rbtn_Function_ThongKe_BenhNhan_CheckedChanged(object sender, EventArgs e) { }
-        private void rbtn_Function_ThongKe_LoaiThuoc_CheckedChanged(object sender, EventArgs e) { }
         private void dgv_DanhSach_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
     }
 }
