@@ -1,4 +1,4 @@
-﻿namespace KhamBenhMINI
+namespace KhamBenhMINI
 {
     partial class FLogin
     {
@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            showpassword = new Button();
+            label_Error = new Label();
             label_Password = new Label();
             label_Name = new Label();
             label_Login = new Label();
@@ -41,6 +43,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(showpassword);
+            panel1.Controls.Add(label_Error);
             panel1.Controls.Add(label_Password);
             panel1.Controls.Add(label_Name);
             panel1.Controls.Add(label_Login);
@@ -52,11 +56,38 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(544, 348);
             panel1.TabIndex = 7;
+            panel1.BackColor = Color.WhiteSmoke;
+            // 
+            // showpassword
+            // 
+            showpassword.BackColor = Color.White;
+            showpassword.FlatAppearance.BorderSize = 0;
+            showpassword.FlatStyle = FlatStyle.Flat;
+            showpassword.Font = new Font("Segoe UI Emoji", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            showpassword.ForeColor = Color.Black;
+            showpassword.ImageAlign = ContentAlignment.MiddleCenter;
+            showpassword.Location = new Point(448, 177);
+            showpassword.Name = "showpassword";
+            showpassword.Size = new Size(32, 27);
+            showpassword.TabIndex = 11;
+            showpassword.Text = "";
+            showpassword.UseVisualStyleBackColor = false;
+            showpassword.Click += button3_Click;
+            // 
+            // label_Error
+            // 
+            label_Error.AutoSize = true;
+            label_Error.ForeColor = Color.Red;
+            label_Error.Location = new Point(120, 73);
+            label_Error.Name = "label_Error";
+            label_Error.Size = new Size(298, 20);
+            label_Error.TabIndex = 10;
+            label_Error.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label_Password
             // 
             label_Password.AutoSize = true;
-            label_Password.Location = new Point(55, 161);
+            label_Password.Location = new Point(74, 180);
             label_Password.Name = "label_Password";
             label_Password.Size = new Size(70, 20);
             label_Password.TabIndex = 9;
@@ -66,7 +97,7 @@
             // label_Name
             // 
             label_Name.AutoSize = true;
-            label_Name.Location = new Point(55, 99);
+            label_Name.Location = new Point(37, 117);
             label_Name.Name = "label_Name";
             label_Name.Size = new Size(107, 20);
             label_Name.TabIndex = 8;
@@ -77,7 +108,7 @@
             // 
             label_Login.AutoSize = true;
             label_Login.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_Login.Location = new Point(177, 17);
+            label_Login.Location = new Point(175, 16);
             label_Login.Name = "label_Login";
             label_Login.Size = new Size(194, 46);
             label_Login.TabIndex = 7;
@@ -86,7 +117,7 @@
             // 
             // button_Exit
             // 
-            button_Exit.Location = new Point(295, 250);
+            button_Exit.Location = new Point(280, 260);
             button_Exit.Name = "button_Exit";
             button_Exit.Size = new Size(94, 29);
             button_Exit.TabIndex = 4;
@@ -96,7 +127,7 @@
             // 
             // button_Login
             // 
-            button_Login.Location = new Point(109, 250);
+            button_Login.Location = new Point(170, 260);
             button_Login.Name = "button_Login";
             button_Login.Size = new Size(94, 29);
             button_Login.TabIndex = 3;
@@ -107,7 +138,7 @@
             // 
             // textBox_Password
             // 
-            textBox_Password.Location = new Point(177, 161);
+            textBox_Password.Location = new Point(180, 177);
             textBox_Password.Name = "textBox_Password";
             textBox_Password.Size = new Size(262, 27);
             textBox_Password.TabIndex = 2;
@@ -117,7 +148,7 @@
             // 
             // textBox_Name
             // 
-            textBox_Name.Location = new Point(177, 96);
+            textBox_Name.Location = new Point(180, 114);
             textBox_Name.Name = "textBox_Name";
             textBox_Name.Size = new Size(262, 27);
             textBox_Name.TabIndex = 1;
@@ -148,5 +179,7 @@
         private Label label_Password;
         private Label label_Name;
         private Label label_Login;
+        private Label label_Error;
+        public Button showpassword;
     }
 }

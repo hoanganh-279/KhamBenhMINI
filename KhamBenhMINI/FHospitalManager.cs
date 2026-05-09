@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Text;
 using System.Linq;
 using System.Windows.Forms;
+using KhamBenhMINI.Features.DichVuKhamBenh;
 
 namespace KhamBenhMINI
 {
@@ -98,22 +99,22 @@ namespace KhamBenhMINI
 
         private void btn_TaoLuotKham_Click(object sender, EventArgs e)
         {
-            // TODO: Mở form Tạo lượt khám
+            OpenChildForm(new FTaoLuotKham());
         }
 
         private void btn_GhiTrieuChung_Click(object sender, EventArgs e)
         {
-            // TODO: Mở form Ghi triệu chứng
+            OpenChildForm(new FGhiNhanTrieuChung());
         }
 
         private void btn_GhiChuanDoan_Click(object sender, EventArgs e)
         {
-            // TODO: Mở form Ghi chuẩn đoán
+            OpenChildForm(new FGhiNhanChuanDoan());
         }
 
         private void btn_GhiDonThuoc_Click(object sender, EventArgs e)
         {
-            // TODO: Mở form Ghi đơn thuốc / xử lý
+            OpenChildForm(new FGhiNhanXuLyThuoc());
         }
 
         //  NHÓM 3 – TRA CỨU VÀ BÁO CÁO

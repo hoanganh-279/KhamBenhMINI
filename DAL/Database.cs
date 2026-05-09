@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;  // ← Chỉ dùng namespace này
+using Microsoft.Data.SqlClient;  // ← Chỉ dùng namespace này
 using System.Data;
 
 namespace KhamBenhMINI
@@ -6,7 +6,7 @@ namespace KhamBenhMINI
     public static class Database
     {
         private static readonly string ConnectionString =
-            "Server=LAPTOP-3J6T1I18\\SQLEXPRESS01;Database=BTGK_KhamBenh;Trusted_Connection=True;TrustServerCertificate=true;";
+            "Server=DESKTOP-ANOQA7D\\SQLEXPRESS;Database=BTGK_KhamBenh;Trusted_Connection=True;TrustServerCertificate=true;";
 
         public static SqlConnection GetConnection() => new SqlConnection(ConnectionString);
 

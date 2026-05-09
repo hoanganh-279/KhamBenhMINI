@@ -1,33 +1,58 @@
 using System;
 using System.Data;
-using Microsoft.Data.SqlClient; // Dùng Microsoft.Data.SqlClient nếu bạn dùng .NET Core / .NET 5+
+using System.Drawing;
+using Microsoft.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace KhamBenhMINI
 {
     public partial class FLogin : Form
     {
-        private const string ConnectionString = "Server=LAPTOP-3J6T1I18\\SQLEXPRESS01;Database=BTGK_KhamBenh;Trusted_Connection=True;TrustServerCertificate=true;";
+        private const string ConnectionString = "Server=DESKTOP-ANOQA7D\\SQLEXPRESS;Database=BTGK_KhamBenh;Trusted_Connection=True;TrustServerCertificate=true;";
 
         public FLogin()
         {
             InitializeComponent();
+            textBox_Password.UseSystemPasswordChar = true;
+            showpassword.Image = GetEyeImage(false);
+            showpassword.Text = "";
+            ClearError();
+        }
+        private bool isShowPassword = false;
+
+        private static Image GetEyeImage(bool showPassword)
+        {
+            Bitmap source = showPassword ? Properties.Resources.hide : Properties.Resources.view;
+            return new Bitmap(source, new Size(16, 16));
+        }
+
+        private void ShowError(string message)
+        {
+            label_Error.Text = message;
+            label_Error.Visible = true;
+        }
+
+        private void ClearError()
+        {
+            label_Error.Text = "";
+            label_Error.Visible = false;
         }
 
         private void button_Login_Click(object sender, EventArgs e)
         {
+            ClearError();
             string username = textBox_Name.Text.Trim();
             string password = textBox_Password.Text.Trim();
 
             if (string.IsNullOrEmpty(username))
             {
-                MessageBox.Show("Vui lòng nhập tên đăng nhập!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowError("Vui lòng nhập tên đăng nhập!");
                 textBox_Name.Focus();
                 return;
             }
             if (string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Vui lòng nhập mật khẩu!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ShowError("Vui lòng nhập mật khẩu!");
                 textBox_Password.Focus();
                 return;
             }
@@ -37,59 +62,59 @@ namespace KhamBenhMINI
                 using (SqlConnection conn = new SqlConnection(ConnectionString))
                 {
                     conn.Open();
-                    // Kiểm tra tên đăng nhập, mật khẩu và trạng thái hoạt động (TrangThai = 1)
-                    string query = @"SELECT MaAdmin, HoTen, Quyen FROM Admin 
-                                     WHERE TenDangNhap = @username AND MatKhau = @password AND TrangThai = 1";
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    string queryUser = @"SELECT MaAdmin, HoTen, Quyen, MatKhau
+                     FROM Admin
+                     WHERE TenDangNhap = @username AND TrangThai = 1";
+
+                    using (SqlCommand cmdUser = new SqlCommand(queryUser, conn))
                     {
-                        // Dùng Add thay vì AddWithValue để tránh lỗi ép kiểu ngầm định
-                        cmd.Parameters.Add("@username", SqlDbType.VarChar, 50).Value = username;
-                        cmd.Parameters.Add("@password", SqlDbType.VarChar, 255).Value = password;
+                        cmdUser.Parameters.Add("@username", SqlDbType.VarChar, 50).Value = username;
 
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (SqlDataReader readerUser = cmdUser.ExecuteReader())
                         {
-                            if (reader.Read())
+                            if (!readerUser.Read())
                             {
-                                // Đăng nhập thành công
-                                int maAdmin = reader.GetInt32(0);
-                                string hoTen = reader.IsDBNull(1) ? "Người dùng" : reader.GetString(1);
-                                string quyen = reader.IsDBNull(2) ? "Nhân viên" : reader.GetString(2);
-
-                                // Lưu thông tin người dùng vào session toàn cục
-                                AppSession.CurrentUser = new UserInfo
-                                {
-                                    MaAdmin = maAdmin,
-                                    HoTen = hoTen,
-                                    Quyen = quyen
-                                };
-
-                                MessageBox.Show($"Đăng nhập thành công!\nChào mừng: {hoTen}\nQuyền: {quyen}",
-                                                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                this.Hide();
-                                FHospitalManager fHM = new FHospitalManager();
-                                fHM.ShowDialog(); // Dừng ở đây cho đến khi form chính đóng
-                                this.Close();     // Đóng form login sau khi thoát form chính
+                                ShowError("Tài khoản không tồn tại hoặc đã bị khóa!");
+                                textBox_Name.Focus();
+                                textBox_Name.SelectAll();
+                                return;
                             }
-                            else
+
+                            int maAdmin = readerUser.GetInt32(0);
+                            string hoTen = readerUser.IsDBNull(1) ? "Người dùng" : readerUser.GetString(1);
+                            string quyen = readerUser.IsDBNull(2) ? "Nhân viên" : readerUser.GetString(2);
+                            string dbPassword = readerUser.IsDBNull(3) ? "" : readerUser.GetString(3);
+
+                            if (dbPassword != password)
                             {
-                                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng, hoặc tài khoản đã bị khóa!",
-                                                "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                ShowError("Sai mật khẩu!");
                                 textBox_Password.Clear();
                                 textBox_Password.Focus();
+                                return;
                             }
+
+                            AppSession.CurrentUser = new UserInfo
+                            {
+                                MaAdmin = maAdmin,
+                                HoTen = hoTen,
+                                Quyen = quyen
+                            };
                         }
                     }
+
+                    this.Hide();
+                    new FHospitalManager().ShowDialog();
+                    this.Close();
                 }
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Lỗi kết nối cơ sở dữ liệu:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError("Lỗi kết nối cơ sở dữ liệu: " + ex.Message);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Đã xảy ra lỗi hệ thống:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ShowError("Đã xảy ra lỗi hệ thống: " + ex.Message);
             }
         }
 
@@ -99,11 +124,38 @@ namespace KhamBenhMINI
         }
 
         // Các sự kiện TextChanged / LabelClick giữ nguyên nếu không dùng
-        private void textBox_Name_TextChanged(object sender, EventArgs e) { }
-        private void textBox_Password_TextChanged(object sender, EventArgs e) { }
+        private void textBox_Name_TextChanged(object sender, EventArgs e)
+        {
+            ClearError();
+        }
+
+        private void textBox_Password_TextChanged(object sender, EventArgs e)
+        {
+            // chỉ clear lỗi khi user thực sự bắt đầu gõ lại
+            if (!string.IsNullOrWhiteSpace(textBox_Password.Text))
+                ClearError();
+        }
+
         private void label_Login_Click(object sender, EventArgs e) { }
         private void label_Name_Click(object sender, EventArgs e) { }
         private void label_Password_Click(object sender, EventArgs e) { }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            isShowPassword = !isShowPassword;
+            textBox_Password.UseSystemPasswordChar = !isShowPassword;
+            showpassword.Image = GetEyeImage(isShowPassword);
+        }
     }
 
     // 🔹 Class hỗ trợ lưu thông tin người dùng đã đăng nhập (dùng toàn dự án)
@@ -118,4 +170,6 @@ namespace KhamBenhMINI
         public string HoTen { get; set; }
         public string Quyen { get; set; }
     }
+
+
 }
