@@ -84,10 +84,9 @@ namespace KhamBenhMINI
         {
             OpenChildForm(new FQLBenhNhan());  
         }
-
         private void btn_TimKiemBN_Click(object sender, EventArgs e)
         {
-            // TODO: Mở form Tìm kiếm bệnh nhân
+            OpenChildForm(new FrmTimKiemBenhNhan());
         }
 
         //  NHÓM 2 – DỊCH VỤ KHÁM BỆNH
@@ -126,7 +125,7 @@ namespace KhamBenhMINI
 
         private void btn_LinhSuKB_Click(object sender, EventArgs e)
         {
-            // TODO: Mở form Lịch sử khám bệnh
+            OpenChildForm(new FQLLichSuKham());
         }
 
         private void btn_ThongKeKB_Click(object sender, EventArgs e)

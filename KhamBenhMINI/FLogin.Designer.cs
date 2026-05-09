@@ -43,6 +43,7 @@ namespace KhamBenhMINI
             // 
             // panel1
             // 
+            panel1.BackColor = Color.WhiteSmoke;
             panel1.Controls.Add(showpassword);
             panel1.Controls.Add(label_Error);
             panel1.Controls.Add(label_Password);
@@ -56,7 +57,6 @@ namespace KhamBenhMINI
             panel1.Name = "panel1";
             panel1.Size = new Size(544, 348);
             panel1.TabIndex = 7;
-            panel1.BackColor = Color.WhiteSmoke;
             // 
             // showpassword
             // 
@@ -65,12 +65,10 @@ namespace KhamBenhMINI
             showpassword.FlatStyle = FlatStyle.Flat;
             showpassword.Font = new Font("Segoe UI Emoji", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             showpassword.ForeColor = Color.Black;
-            showpassword.ImageAlign = ContentAlignment.MiddleCenter;
             showpassword.Location = new Point(448, 177);
             showpassword.Name = "showpassword";
             showpassword.Size = new Size(32, 27);
             showpassword.TabIndex = 11;
-            showpassword.Text = "";
             showpassword.UseVisualStyleBackColor = false;
             showpassword.Click += button3_Click;
             // 
@@ -80,7 +78,7 @@ namespace KhamBenhMINI
             label_Error.ForeColor = Color.Red;
             label_Error.Location = new Point(120, 73);
             label_Error.Name = "label_Error";
-            label_Error.Size = new Size(298, 20);
+            label_Error.Size = new Size(0, 20);
             label_Error.TabIndex = 10;
             label_Error.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -162,6 +160,7 @@ namespace KhamBenhMINI
             ClientSize = new Size(568, 372);
             Controls.Add(panel1);
             Name = "FLogin";
+            SizeGripStyle = SizeGripStyle.Show;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Đăng nhập";
             panel1.ResumeLayout(false);

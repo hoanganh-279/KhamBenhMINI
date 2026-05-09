@@ -8,7 +8,7 @@ namespace KhamBenhMINI
 {
     public partial class FLogin : Form
     {
-        private const string ConnectionString = "Server=DESKTOP-ANOQA7D\\SQLEXPRESS;Database=BTGK_KhamBenh;Trusted_Connection=True;TrustServerCertificate=true;";
+        private const string ConnectionString = "Server=LAPTOP-3J6T1I18\\SQLEXPRESS01;Database=BTGK_KhamBenh;Trusted_Connection=True;TrustServerCertificate=true;";
 
         public FLogin()
         {
